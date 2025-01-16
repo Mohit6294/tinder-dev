@@ -1,7 +1,31 @@
-const express = require('express');
+const express = require("express");
 
 const app = express();
 
+app.use(
+  "/user",
+  [(req, res, next) => {
+    // Route Handler
+    //res.send("route Handler 1")
+    console.log("Handling the route user !!");
+    //res.send("Resonse !");
+    next(); 
+    //res.send("REsponse 1!");
+    
+  },
+  (req, res, next) => {
+    //route handler 2
+    console.log("Handling the route user 2");
+    next();
+    //res.send("2nd Response !");
+  },
+  (req, res) => {
+    console.log("Handling the route user 3");
+    res.send("3rd Response !")
+  }]
+);
+
+/*
 //this will only handle get call to /user
 app.get("/user/:userId",(req,res) => {
   console.log(req.params)
@@ -25,8 +49,7 @@ app.use('/test', (req, res) => {
   res.send('response from test page');
 });
 
-
-app.listen(5000,()=>{
+*/
+app.listen(5000, () => {
   console.log("listnening the port on 5000");
-  
-})
+});
