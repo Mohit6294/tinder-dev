@@ -2,6 +2,42 @@ const express = require("express");
 
 const app = express();
 
+const {adminAuth, userAuth } = require('./middleware/auth');
+
+app.use("/admin", adminAuth);
+
+app.use("/user",userAuth, (req, res) => {
+  res.send("User Data Sent");
+} )
+
+app.get("/admin/getAllData", (req, res, next) =>{
+  res.send("send all Data");
+});
+
+app.delete("/admin/deleteUser", (req, res) => {
+  //Logic of deleting the data
+  res.send("Deleted the user");
+})
+
+/*
+app.get(
+  "/user",
+  (req, res, next) => {
+    console.log("Handling the route user !!");
+    next();
+    
+  }
+);
+
+app.get(
+  "/user",
+  (req, res, next) => {
+    console.log("handling the route handler");
+    res.send("2nd Route Handler");
+  }
+)
+
+/*
 app.use(
   "/user",
   [(req, res, next) => {
@@ -24,7 +60,7 @@ app.use(
     res.send("3rd Response !")
   }]
 );
-
+*/
 /*
 //this will only handle get call to /user
 app.get("/user/:userId",(req,res) => {
