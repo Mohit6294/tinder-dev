@@ -3,7 +3,10 @@ const express = require('express');
 const app = express();
 
 //this will only handle get call to /user
-app.get("/user",(req,res) => {
+app.get("/user/:userId",(req,res) => {
+  console.log(req.params)
+  console.log(req.query);
+  
   res.send({firstname:"Mohit",lastname:"Bhadani"});
 })
 
