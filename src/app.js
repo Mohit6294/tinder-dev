@@ -2,19 +2,26 @@ const express = require('express');
 
 const app = express();
 
+//this will only handle get call to /user
+app.get("/user",(req,res) => {
+  res.send({firstname:"Mohit",lastname:"Bhadani"});
+})
 
+app.post("/user",(req, res) => {
+  //saving to database 
+  res.send("Data saved to Db Successfully");
+})
 
-app.use('/hello',(req,res)=>{
-  res.send('response from hello page');
-});
+app.delete("/user",(req, res) => {
+  //delete user
+  res.send("user deleted succesfully")
+})
 
+// this will match all the http method api calls to /test 
 app.use('/test', (req, res) => {
   res.send('response from test page');
 });
 
-app.use('/',(req,res) => {
-  res.send('resonse from home page');
-});
 
 app.listen(5000,()=>{
   console.log("listnening the port on 5000");
