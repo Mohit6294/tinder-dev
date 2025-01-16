@@ -1,0 +1,14 @@
+{
+  "name": "tinderdev",
+  "version": "1.0.0",
+  "description": "This is tinder for developers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mohit Bhadani",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
