@@ -1,8 +1,38 @@
 const express = require("express");
-
 const app = express();
+const connectDB= require("./config/database");
+const User = require("./models/User");
 
 
+app.post('/signup', async (req, res) =>{
+  const userObj = {
+    firstName: "Virat",
+    lastName: "Kohli",
+    emailId: "viratkohli@gmail.com",
+    password:"Virat@134"
+  }
+
+  //creating new instance of model(creating a document) User
+  const user = new User(userObj);
+  try{
+  await user.save();
+  res.send("User Added Successfully");
+  }catch(err){
+    res.status(400).send("Error while saving user: ",err.message);
+  }
+  
+})
+
+connectDB().then(()=>{
+  console.log("Database connection established...");
+  app.listen(5000, () => {
+    console.log("listnening the port on 5000");
+  });
+}).catch(err =>{
+  console.error("Database cannot be connected");
+})
+
+/*
 app.get("/getUserData", (req, res) => {
   //Logic of DB Call and get User data
   try{
@@ -110,6 +140,4 @@ app.use('/test', (req, res) => {
 });
 
 */
-app.listen(5000, () => {
-  console.log("listnening the port on 5000");
-});
+

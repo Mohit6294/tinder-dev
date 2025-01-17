@@ -4,12 +4,13 @@
   "description": "This is tinder for developers",
   "main": "index.js",
   "scripts": {
-    "start":"npm src/app.js",
-    "dev":"nodemon src/app.js"
+    "start": "npm src/app.js",
+    "dev": "nodemon src/app.js"
   },
   "author": "Mohit Bhadani",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "mongoose": "^8.9.5"
   }
 }
